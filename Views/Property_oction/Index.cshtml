@@ -1,0 +1,62 @@
+﻿@model IEnumerable<Property_Mgmt_MVC.Models.Property_oction>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<!--code to show the create page data of the table-->
+<h1>Prorety Auction</h1>
+
+<img src="~/img/home.jpg" />
+
+<p>A property auction is a fast-paced, public sale. The property is sold to the buyer with the highest bid after the seller's reserve price is reached. You can enter your bid price with the help of this page.</p>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Property Area
+            </th>
+            <th>
+                Dealer Name
+            </th>
+
+            <th>
+                Customer Name
+            </th>
+            <th>
+                Bid Price
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Property_Detail.Area)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Dealer_Detail.Dealer_Name)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Customer_Detail.Customer_Name)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Bid_Price)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
